@@ -13,7 +13,7 @@ public class RandomStreams {
         getEmplyeesListwithSalaryFilter(employeeList);
 
         List<String> employeeNames = getEmplyeesListwithSalaryFilter(employeeList);
-        employeeNames.forEach(value -> System.out.println(value));
+        employeeNames.forEach(System.out::println);
 
     }
 
@@ -21,18 +21,17 @@ public class RandomStreams {
     private static List<String> getEmplyeesListwithSalaryFilter(List<Employee> employeeList) {
         Predicate<Employee> isSalaryGreater = val -> val.getSalary() > 25000L;
 
-        List<String> names = employeeList.stream()
+        return employeeList.stream()
                 .filter(isSalaryGreater)
-                .map(e -> customCasingName(e))
+                .map(RandomStreams::customCasingName)
                 .collect(Collectors.toList());
-        return names;
     }
 
     private static String customCasingName(Employee e) {
-        StringBuffer sbuf = new StringBuffer();
-        sbuf.append(e.getName().substring(0, 1).toLowerCase());
-        sbuf.append(e.getName().substring(1, e.getName().length()).toUpperCase(Locale.ROOT));
-        return sbuf.toString();
+        StringBuilder sbuilder = new StringBuilder();
+        sbuilder.append(e.getName().substring(0, 1).toLowerCase());
+        sbuilder.append(e.getName().substring(1).toUpperCase(Locale.ROOT));
+        return sbuilder.toString();
     }
 
 
