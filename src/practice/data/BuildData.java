@@ -29,16 +29,23 @@ public class BuildData {
         e3.setId(4);
         e3.setName("Venkat");
         e3.setSalary(20000L);
-        return Arrays.asList(e1, e, e2, e3);
+        return Arrays.asList(e, e1, e2, e3);
     }
 
     public static Map<Character, Integer> getMapData() {
-        Map<Character, Integer> characterIntegerMap = new HashMap<Character, Integer>();
+        Map<Character, Integer> characterIntegerMap = new HashMap<>();
 
         characterIntegerMap.put('a', 2);
         characterIntegerMap.put('b', 5);
         characterIntegerMap.put('d', 1);
         characterIntegerMap.put('e', 2);
         return characterIntegerMap;
+    }
+
+    public static List<Integer> getShortCircuitData() {
+        return Arrays.asList(1, 2, 2, 3, 4, 5);
+    }
+    public static List<Integer> getShortCircuitDataForParallel() {
+        return Arrays.asList(1, 2, 2, 3, 4, 5, 1, 2, 2, 3, 4, 5, 1, 2, 2, 3, 4, 5);
     }
 }
