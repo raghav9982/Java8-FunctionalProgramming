@@ -3,6 +3,7 @@ import practice.data.BuildData;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
@@ -19,6 +20,24 @@ public class CollectorsMap {
         mergeTwoSets(BuildData.getMapData(), BuildData.getDuplicateMapData());
 
         collectorsJoiningExample(BuildData.getWordsDats());
+
+        collectorsReducingExample(BuildData.getShortCircuitData());
+
+    }
+
+    private static void collectorsReducingExample(List<Integer> shortCircuitData) {
+        Optional<Integer> finalCount = shortCircuitData.stream().reduce(Math::addExact);
+        System.out.println("final Count after reducing is :" + finalCount);
+
+        int finalCountWithInitialzer = shortCircuitData.stream().reduce(0, Math::addExact);
+        System.out.println("finalCountWithInitialzer in Reducer: " + finalCountWithInitialzer);
+
+        int finalCountWithInitialzerWithMultiplier = shortCircuitData.stream().reduce(0, Math::multiplyExact);
+        System.out.println("finalCountWithInitialzerWithMultiplier in Reducer: " + finalCountWithInitialzerWithMultiplier);
+
+
+        String finalCountWithInitialzerMapping = shortCircuitData.stream().map(x -> Integer.toString(x)).reduce("", (e1, e2) -> e1 + e2);
+        System.out.println("finalCountWithInitialzerMapping: " + finalCountWithInitialzerMapping);
 
     }
 
