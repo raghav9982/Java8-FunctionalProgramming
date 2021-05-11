@@ -56,13 +56,21 @@ public class SortCollectionTypes {
 
         System.out.println("values rearraanged: ");
         sortedWithMapButRetunedwithValuesAsKey.forEach((k, v) -> System.out.println("Key: " + k + " value : " + v));
+
+        System.out.println("Grouping and then count :");
+        collectorCountingExample(characterIntegerMap);
     }
 
+    private static void collectorCountingExample(Map<Character, Integer> characterIntegerMap) {
+        Map<Integer,Set<Character>> characterSetMap = characterIntegerMap.entrySet().stream().collect(Collectors.groupingBy(Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toSet())));
+        printMap(characterSetMap);
+    }
+
+
     private static Map<Integer, Character> swapKeyAndValueIntoResult(Map<Character, Integer> characterIntegerMap) {
-        Map<Integer, Character> sortedWithMapButRetunedwithValuesAsKey = characterIntegerMap.entrySet().stream()
+        return characterIntegerMap.entrySet().stream()
                 .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
                 .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey, (e1, e2) -> e1, LinkedHashMap::new));
-        return sortedWithMapButRetunedwithValuesAsKey;
     }
 
     private static Map<Character, Integer> sortMapInreversingOrder(Map<Character, Integer> characterIntegerMap) {
@@ -82,17 +90,15 @@ public class SortCollectionTypes {
     }
 
     private static Map<Integer, Set<Character>> mapByGroup(Map<Character, Integer> characterIntegerMap) {
-        Map<Integer, Set<Character>> groupedMap = characterIntegerMap.entrySet().stream().
-                collect(Collectors.groupingBy(Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toSet())));
 
-        return groupedMap;
+        return characterIntegerMap.entrySet().stream().
+                collect(Collectors.groupingBy(Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toSet())));
     }
 
     private static Map<Character, Integer> sortMapByComparingKey(Map<Character, Integer> characterIntegerMap) {
-        Map<Character, Integer> sortedMap = characterIntegerMap.entrySet().stream()
+        return characterIntegerMap.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-        return sortedMap;
     }
 
 

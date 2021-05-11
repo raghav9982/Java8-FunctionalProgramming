@@ -39,7 +39,20 @@ public class BuildData {
         characterIntegerMap.put('b', 5);
         characterIntegerMap.put('d', 1);
         characterIntegerMap.put('e', 2);
+      //  return Collections.unmodifiableMap(characterIntegerMap);
         return characterIntegerMap;
+    }
+
+    public static Map<Character, Integer> getDuplicateMapData() {
+        Map<Character, Integer> characterIntegerMap = new HashMap<>();
+
+        characterIntegerMap.put('a', 2);
+        characterIntegerMap.put('b', 5);
+        characterIntegerMap.put('d', 1);
+        characterIntegerMap.put('e', 2);
+        characterIntegerMap.put('f', 2);
+     //   return Collections.unmodifiableMap(characterIntegerMap);
+        return  characterIntegerMap;
     }
 
     public static List<Integer> getShortCircuitData() {
@@ -48,4 +61,21 @@ public class BuildData {
     public static List<Integer> getShortCircuitDataForParallel() {
         return Arrays.asList(1, 2, 2, 3, 4, 5, 1, 2, 2, 3, 4, 5, 1, 2, 2, 3, 4, 5);
     }
+
+    public static List<String> getWordsDats() {
+        return Arrays.asList("Hello", "World", "Crazy", "Kiya", "re");
+    }
+
+    public static Map<Integer, Integer> getMapIntegerIntegerData() {
+        Map<Integer, Integer> integerIntegerMap = new HashMap<>();
+
+        integerIntegerMap.put(1000, 2);
+        integerIntegerMap.put(2000, 5);
+        integerIntegerMap.put(55, 1);
+        integerIntegerMap.put(99, 2);
+        integerIntegerMap.put(999, 2);
+        return integerIntegerMap;
+    }
+
+
 }
