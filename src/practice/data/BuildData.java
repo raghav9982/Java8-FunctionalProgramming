@@ -71,9 +71,11 @@ public class BuildData {
 
         integerIntegerMap.put(1000, 2);
         integerIntegerMap.put(2000, 5);
-        integerIntegerMap.put(55, 1);
         integerIntegerMap.put(99, 2);
         integerIntegerMap.put(999, 2);
+        integerIntegerMap.put(1001, 6);
+        integerIntegerMap.put(55, 1);
+
         return integerIntegerMap;
     }
 

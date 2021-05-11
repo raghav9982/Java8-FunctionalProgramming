@@ -1,11 +1,11 @@
 import practice.data.BuildData;
 
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -65,7 +65,9 @@ public class CollectorsMap {
     private static void countKeysinMap(Map<Integer, Integer> integerIntegerMap) {
         System.out.println("Values in countKeysinMap: ");
         Map<Integer, Integer> countValuesMap = integerIntegerMap.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getValue, e -> 1, (e1, e2) -> e1 + 1, TreeMap::new));
+               .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(Map.Entry::getValue, e -> 1, (e1, e2) -> e1 + 1, LinkedHashMap::new));
+        //   countValuesMap.entrySet().stream().sorted(Map.Entry.comparingByKey(Comparator.reverseOrder())).collect(Collectors.toMap())
         countValuesMap.forEach((k, v) -> System.out.println(k + " : " + v));
     }
 }
