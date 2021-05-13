@@ -18,8 +18,6 @@ public class IndexSum {
             }
             complimentMap.putIfAbsent(arr[i], i);
         }
-
-
         System.out.println("first val" + outputArr[0] + " second Val : " + outputArr[1]);
     }
 }
