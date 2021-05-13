@@ -3,7 +3,7 @@ package practice.interview;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class IndexSum {
+public class TwoSum {
 
     public static void main(String[] args) {
         int[] arr = {1, 4, 2, 5, 7};
