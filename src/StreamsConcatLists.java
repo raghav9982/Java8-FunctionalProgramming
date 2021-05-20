@@ -10,10 +10,10 @@ public class StreamsConcatLists {
         List<Integer> list1 = Arrays.asList(1, 2, 3, 4);
         List<Integer> list2 = Arrays.asList(4, 6, 7, 8);
 
-        Set<Integer> fianlList = Stream.of(list1, list2)
+        Set<Integer> finalConcatList = Stream.of(list1, list2)
                                 .flatMap(e -> e.stream())
                                 .collect(Collectors.toSet());
 
-        fianlList.forEach(System.out::println);
+        finalConcatList.forEach(System.out::println);
     }
 }
