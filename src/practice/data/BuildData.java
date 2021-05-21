@@ -26,7 +26,7 @@ public class BuildData {
         e2.setSalary(30000L);
         e2.setName("Purimetla");
 
-        e3.setId(4);
+        e3.setId(3);
         e3.setName("Venkat");
         e3.setSalary(20000L);
         return Arrays.asList(e, e1, e2, e3);
@@ -78,6 +78,18 @@ public class BuildData {
 
         return integerIntegerMap;
     }
+
+    public static  Map<Integer, List<Integer>> getMapWithListValues() {
+        Map<Integer, List<Integer>> integerIntegerMap = new HashMap<>();
+
+        integerIntegerMap.put(1000, Arrays.asList(1,2,3,4,5));
+        integerIntegerMap.put(2000, Arrays.asList(1,2,3,4,5,6,7,8));
+
+
+        return integerIntegerMap;
+    }
+
+
 
 
 }
