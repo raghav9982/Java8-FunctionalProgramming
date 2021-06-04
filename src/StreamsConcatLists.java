@@ -26,7 +26,7 @@ public class StreamsConcatLists {
         concatAndExtractList(e1, e2);
         concatAndExtractSet(e1, e2);
 
-        convertOneObjectToAnother(e1,e2);
+        convertOneObjectToAnother(e1, e2);
 
     }
 
@@ -36,10 +36,8 @@ public class StreamsConcatLists {
                 .map(e -> new Person(e.getId(), e.getName()))
                 .filter(p -> p.getId() > 2)
                 .sorted(Comparator.comparing(Person::getId).thenComparing(Person::getName, Comparator.reverseOrder()))
+                .peek(System.out::println)
                 .collect(Collectors.toList());
-
-        sortedTransformedList.forEach(System.out::println);
-
     }
 
     private static void concatAndExtractList(List<Employee> e1, List<Employee> e2) {
@@ -47,8 +45,8 @@ public class StreamsConcatLists {
                 .flatMap(List::stream)
                 .sorted(Comparator.comparing(Employee::getId, Comparator.reverseOrder()).thenComparing(Employee::getSalary))
                 .distinct()
+                .peek(System.out::println)
                 .collect(Collectors.toList());
-        sortedSet.forEach(System.out::println);
     }
 
     private static void concatAndExtractSet(List<Employee> e1, List<Employee> e2) {
@@ -57,9 +55,8 @@ public class StreamsConcatLists {
         Set<Employee> sortedSet = Stream.of(e1, e2)
                 .flatMap(List::stream)
                 .sorted(Comparator.comparing(Employee::getId, Comparator.reverseOrder()))
+                .peek(System.out::println)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
-        sortedSet.forEach(System.out::println);
-
 
         //2. Even better if you can do comparator within Collectors
         Set<Employee> sortedSetWithComparatorInCollections = Stream.of(e1, e2)
